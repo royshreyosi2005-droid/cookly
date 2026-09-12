@@ -62,11 +62,11 @@ export const createApp = (): Express => {
     app.use(express.static(distPath));
 
     // SPA fallback for frontend client routing (e.g. /pantry, /ai-chef, /discover, /profile)
-    app.get('*', (req: Request, res: Response, next: NextFunction) => {
-      if (req.originalUrl.startsWith('/api')) {
-        return next();
+    app.use((req: Request, res: Response, next: NextFunction) => {
+      if (req.method === 'GET' && !req.path.startsWith('/api')) {
+        return res.sendFile(path.join(distPath, 'index.html'));
       }
-      res.sendFile(path.join(distPath, 'index.html'));
+      next();
     });
   }
 
