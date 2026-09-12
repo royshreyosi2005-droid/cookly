@@ -1,0 +1,293 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root,
+  [data-theme="light"],
+  html[data-theme="light"] {
+    /* ☀️ LIGHT THEME — Fresh / Warm / Bright / Editorial */
+    --color-bg: #FFF8F1;
+    --color-bg-secondary: #FFF0E4;
+    --color-surface: #FFFFFF;
+    --color-surface-elevated: #FFFDF9;
+    --color-surface-hover: #FAF0E6;
+
+    --color-text-primary: #2B211B;
+    --color-text-secondary: #75665C;
+    --color-text-muted: #A49488;
+
+    --color-border: #EBDDCF;
+    --color-border-strong: #DBC8B5;
+
+    --color-accent: #E85D75;
+    --color-accent-hover: #D9435D;
+    --color-accent-soft: #FFE3E9;
+
+    --color-secondary: #5B9C87;
+    --color-secondary-soft: #E2F2EC;
+
+    --color-highlight: #F2B84B;
+    --color-highlight-soft: #FEF7E6;
+
+    --color-success: #4E9A73;
+    --color-warning: #D99A35;
+    --color-error: #D65353;
+
+    /* Semantic Aliases */
+    --bg-primary: var(--color-bg);
+    --bg-secondary: var(--color-bg-secondary);
+    --surface-card: var(--color-surface);
+    --surface-elevated: var(--color-surface-elevated);
+    --surface-hover: var(--color-surface-hover);
+    --text-primary: var(--color-text-primary);
+    --text-secondary: var(--color-text-secondary);
+    --text-muted: var(--color-text-muted);
+    --border: var(--color-border);
+    --border-strong: var(--color-border-strong);
+    --accent-primary: var(--color-accent);
+    --accent-hover: var(--color-accent-hover);
+    --accent-soft: var(--color-accent-soft);
+    --secondary: var(--color-secondary);
+    --secondary-soft: var(--color-secondary-soft);
+    --highlight: var(--color-highlight);
+    --highlight-soft: var(--color-highlight-soft);
+    --success: var(--color-success);
+    --warning: var(--color-warning);
+    --error: var(--color-error);
+
+    --shadow-card: 0 2px 15px -3px rgba(43, 33, 27, 0.05), 0 4px 6px -4px rgba(43, 33, 27, 0.03);
+    --shadow-elevated: 0 12px 30px -4px rgba(43, 33, 27, 0.08), 0 4px 10px -2px rgba(43, 33, 27, 0.03);
+    --overlay: rgba(43, 33, 27, 0.5);
+
+    /* Cream scale for Light */
+    --cream-50: #FFF8F1;
+    --cream-100: #FFF0E4;
+    --cream-200: #EBDDCF;
+    --cream-300: #DBC8B5;
+    --cream-400: #A49488;
+    --cream-500: #75665C;
+
+    /* Charcoal scale for Light */
+    --charcoal-950: #150F0C;
+    --charcoal-900: #2B211B;
+    --charcoal-850: #3E3129;
+    --charcoal-800: #54443A;
+    --charcoal-700: #6B574B;
+    --charcoal-600: #75665C;
+    --charcoal-500: #8C7B70;
+    --charcoal-400: #A49488;
+    --charcoal-300: #C4B6AA;
+
+    /* Spice scale for Light (Coral-pink) */
+    --spice-100: #FFE3E9;
+    --spice-200: #FFC2CE;
+    --spice-300: #FA8A9F;
+    --spice-950: #4B0E1B;
+
+    /* Herb scale for Light (Sage) */
+    --herb-50: #F2F8F5;
+    --herb-100: #E2F2EC;
+    --herb-200: #C2E2D5;
+    --herb-300: #93C9B4;
+    --herb-400: #5B9C87;
+    --herb-700: #346857;
+    --herb-800: #244C3F;
+    --herb-900: #18352C;
+    --herb-950: #0C1D17;
+  }
+
+  :root.dark,
+  html.dark,
+  [data-theme="dark"],
+  html[data-theme="dark"],
+  .dark {
+    /* 🌙 DARK THEME — Softer Premium Palette (Plum-Charcoal & Lavender/Mint) */
+    --color-bg: #17151B;
+    --color-bg-secondary: #211D27;
+    --color-surface: #292430;
+    --color-surface-elevated: #312A39;
+    --color-surface-hover: #393143;
+
+    --color-text-primary: #EDE7F2;
+    --color-text-secondary: #C4B9CB;
+    --color-text-muted: #9B90A4;
+
+    --color-border: #443B4C;
+    --color-border-strong: #564A61;
+
+    --color-accent: #B38CF4;
+    --color-accent-hover: #C2A1FA;
+    --color-accent-soft: #3A2E4C;
+
+    --color-secondary: #72C7B1;
+    --color-secondary-soft: #243F39;
+
+    --color-highlight: #F0A6B8;
+    --color-highlight-soft: #442B34;
+
+    --color-success: #72C7A5;
+    --color-warning: #E7B86B;
+    --color-error: #E6818D;
+
+    /* Semantic Aliases */
+    --bg-primary: var(--color-bg);
+    --bg-secondary: var(--color-bg-secondary);
+    --surface-card: var(--color-surface);
+    --surface-elevated: var(--color-surface-elevated);
+    --surface-hover: var(--color-surface-hover);
+    --text-primary: var(--color-text-primary);
+    --text-secondary: var(--color-text-secondary);
+    --text-muted: var(--color-text-muted);
+    --border: var(--color-border);
+    --border-strong: var(--color-border-strong);
+    --accent-primary: var(--color-accent);
+    --accent-hover: var(--color-accent-hover);
+    --accent-soft: var(--color-accent-soft);
+    --secondary: var(--color-secondary);
+    --secondary-soft: var(--color-secondary-soft);
+    --highlight: var(--color-highlight);
+    --highlight-soft: var(--color-highlight-soft);
+    --success: var(--color-success);
+    --warning: var(--color-warning);
+    --error: var(--color-error);
+
+    --shadow-card: 0 2px 16px -2px rgba(0, 0, 0, 0.45), 0 4px 6px -4px rgba(0, 0, 0, 0.25);
+    --shadow-elevated: 0 12px 28px -4px rgba(0, 0, 0, 0.55), 0 6px 12px -2px rgba(0, 0, 0, 0.35);
+    --overlay: rgba(16, 14, 19, 0.75);
+
+    /* Cream scale for Dark (soft lavender/off-white tints) */
+    --cream-50: #EDE7F2;
+    --cream-100: #E0D6E7;
+    --cream-200: #C4B9CB;
+    --cream-300: #B0A3B9;
+    --cream-400: #9B90A4;
+    --cream-500: #7E7288;
+
+    /* Charcoal scale for Dark (plum-charcoal layers) */
+    --charcoal-950: #100E13;
+    --charcoal-900: #17151B;
+    --charcoal-850: #211D27;
+    --charcoal-800: #292430;
+    --charcoal-700: #312A39;
+    --charcoal-600: #443B4C;
+    --charcoal-500: #564A61;
+    --charcoal-400: #9B90A4;
+    --charcoal-300: #C4B9CB;
+
+    /* Spice scale for Dark (Lavender) */
+    --spice-100: #3A2E4C;
+    --spice-200: #574175;
+    --spice-300: #8865BC;
+    --spice-950: #1E1729;
+
+    /* Herb scale for Dark (Mint) */
+    --herb-50: #172622;
+    --herb-100: #243F39;
+    --herb-200: #355E55;
+    --herb-300: #529383;
+    --herb-400: #72C7B1;
+    --herb-700: #72C7B1;
+    --herb-800: #9BE0CF;
+    --herb-900: #C8F3E8;
+    --herb-950: #0D1614;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overscroll-behavior-y: none;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+
+  /* Custom scrollbar for editorial elegance */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
+  }
+}
+
+@layer utilities {
+  .font-editorial {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .glass-header {
+    background: rgba(255, 248, 241, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .dark .glass-header {
+    background: rgba(9, 11, 20, 0.88);
+    border-color: var(--color-border);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .dark .glass-card {
+    background: rgba(23, 28, 49, 0.85);
+    border-color: var(--color-border);
+  }
+
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .dark .glass-nav {
+    background: rgba(23, 28, 49, 0.94);
+    border-color: var(--color-border);
+  }
+
+  /* Mobile safe area padding utilities */
+  .pb-safe {
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 12px);
+  }
+
+  .pt-safe {
+    padding-top: max(env(safe-area-inset-top, 0px), 12px);
+  }
+
+  .h-dvh {
+    height: 100dvh;
+  }
+
+  .min-h-dvh {
+    min-height: 100dvh;
+  }
+
+  /* Hide scrollbar while retaining momentum swipe on mobile */
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}

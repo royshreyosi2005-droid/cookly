@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: cookly-app
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_PATH
+        value: /data/cookly.db
+    disk:
+      name: cookly-data
+      mountPath: /data
+      sizeGB: 1
