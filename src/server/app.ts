@@ -3,6 +3,7 @@ import type { Express, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
 import { config } from './config/env.js';
 import { apiRouter } from './routes/index.js';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
@@ -56,18 +57,30 @@ export const createApp = (): Express => {
   // Mount API endpoints under /api
   app.use('/api', apiRouter);
 
-  // Serve static assets in production if dist directory exists
-  const distPath = path.resolve(process.cwd(), 'dist');
+  // Robust dist directory resolution for production
+  const candidateDistDirs = [
+    path.resolve(process.cwd(), 'dist'),
+    path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../dist'),
+    path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist')
+  ];
+  const distPath = candidateDistDirs.find((dir) => fs.existsSync(dir) && fs.existsSync(path.join(dir, 'index.html'))) || candidateDistDirs[0];
+
   if (fs.existsSync(distPath)) {
+    console.log(`[Static] Serving frontend static assets from: ${distPath}`);
     app.use(express.static(distPath));
 
-    // SPA fallback for frontend client routing (e.g. /pantry, /ai-chef, /discover, /profile)
+    // SPA fallback for frontend client routing (e.g. /, /pantry, /ai-chef, /discover, /profile)
     app.use((req: Request, res: Response, next: NextFunction) => {
       if (req.method === 'GET' && !req.path.startsWith('/api')) {
-        return res.sendFile(path.join(distPath, 'index.html'));
+        const indexPath = path.join(distPath, 'index.html');
+        if (fs.existsSync(indexPath)) {
+          return res.sendFile(indexPath);
+        }
       }
       next();
     });
+  } else {
+    console.warn(`[Static Warning] dist directory not found at candidate paths. Run 'npm run build' to compile frontend.`);
   }
 
   // 404 Handler for unhandled API routes

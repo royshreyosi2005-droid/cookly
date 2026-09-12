@@ -3,12 +3,14 @@ import { config } from './config/env.js';
 
 const app = createApp();
 
-const server = app.listen(config.port, () => {
+const HOST = '0.0.0.0';
+
+const server = app.listen(config.port, HOST, () => {
   console.log(`=============================================`);
   console.log(`🚀 Cookly Backend Server is running!`);
-  console.log(`🌐 Port: ${config.port}`);
+  console.log(`🌐 Host: ${HOST} | Port: ${config.port}`);
   console.log(`⚙️  Environment: ${config.nodeEnv}`);
-  console.log(`🩺 Health Check: http://localhost:${config.port}/api/health`);
+  console.log(`🩺 Health Check: http://${HOST}:${config.port}/api/health`);
   console.log(`🔗 Allowed Origin: ${config.clientOrigin}`);
   console.log(`=============================================`);
 });
